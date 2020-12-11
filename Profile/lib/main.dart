@@ -9,6 +9,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.teal[500],
+        appBar: AppBar(
+          backgroundColor: Colors.teal[300],
+          title: Center(
+            child: Text(
+              'My Profile'
+            ),
+          )
+        ),
         body: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
