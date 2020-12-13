@@ -3,11 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
 import 'reusable.dart';
+import 'constant.dart';
 
-const bottomContainerHeight = 80.0;
-const activeCardColour = Color(0xFF1D1E33);
-const inactiveCardColour = Color(0xFF111328);
-const bottomContainerColour = Color(0xFFEB1555);
 enum Gender {
   male,
   female,
@@ -20,6 +17,7 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender selectedGender;
+  int height = 180;
 
   @override
   Widget build(BuildContext context) {
@@ -27,64 +25,96 @@ class _InputPageState extends State<InputPage> {
       appBar: AppBar(
         title: Text('BMI CALCULATOR'),
       ),
-      body: Column(
-        children: [
-          Expanded(
-              child: Row(
-            children: [
-              Expanded(
-                child: ReusableCard(
-                  onPress: () {
-                    setState(() {
-                      selectedGender = Gender.male;
-                    });
-                  },
-                  colour: selectedGender == Gender.male
-                      ? activeCardColour
-                      : inactiveCardColour,
-                  cardChild: ReusableIcon(
-                    icon: FontAwesomeIcons.mars,
-                    label: 'MALE',
-                  ),
+      body: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+        Expanded(
+            child: Row(
+          children: [
+            Expanded(
+              child: ReusableCard(
+                onPress: () {
+                  setState(() {
+                    selectedGender = Gender.male;
+                  });
+                },
+                colour: selectedGender == Gender.male
+                    ? kActiveCardColour
+                    : kInactiveCardColour,
+                cardChild: ReusableIcon(
+                  icon: FontAwesomeIcons.mars,
+                  label: 'MALE',
                 ),
               ),
-              Expanded(
-                child: ReusableCard(
-                  onPress: () {
-                    setState(() {
-                      selectedGender = Gender.female;
-                    });
-                  },
-                  colour: selectedGender == Gender.female
-                      ? activeCardColour
-                      : inactiveCardColour,
-                  cardChild: ReusableIcon(
-                      icon: FontAwesomeIcons.venus, label: 'FEMALE'),
-                ),
+            ),
+            Expanded(
+              child: ReusableCard(
+                onPress: () {
+                  setState(() {
+                    selectedGender = Gender.female;
+                  });
+                },
+                colour: selectedGender == Gender.female
+                    ? kActiveCardColour
+                    : kInactiveCardColour,
+                cardChild:
+                    ReusableIcon(icon: FontAwesomeIcons.venus, label: 'FEMALE'),
               ),
-            ],
-          )),
-          Expanded(
-            child: ReusableCard(colour: activeCardColour),
+            ),
+          ],
+        )),
+        Expanded(
+          child: ReusableCard(
+            colour: kActiveCardColour,
+            cardChild: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'HEIGHT',
+                  style: kLabelTextStyle,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.baseline,
+                  textBaseline: TextBaseline.alphabetic,
+                  children: [
+                    Text(height.toString(), style: kNumberTextStyle),
+                    Text(
+                      'cm',
+                      style: kLabelTextStyle,
+                    ),
+                  ],
+                ),
+                Slider(
+                    value: height.toDouble(),
+                    min: 120.0,
+                    max: 220.0,
+                    activeColor: Color(0xFFEB1555),
+                    inactiveColor: Color(0xFF8D8E98),
+                    onChanged: (double newValue) {
+                      setState(() {
+                        height = newValue.round();
+                      });
+                    })
+              ],
+            ),
           ),
-          Expanded(
-              child: Row(
-            children: [
-              Expanded(
-                child: ReusableCard(colour: activeCardColour),
-              ),
-              Expanded(
-                child: ReusableCard(colour: activeCardColour),
-              ),
-            ],
-          )),
-          Container(
-              color: bottomContainerColour,
-              margin: EdgeInsets.only(top: 10.0),
-              width: double.infinity,
-              height: bottomContainerHeight)
-        ],
-      ),
+        ),
+        Expanded(
+            child: Row(
+          children: [
+            Expanded(
+              child: ReusableCard(colour: kActiveCardColour),
+            ),
+            Expanded(
+              child: ReusableCard(colour: kActiveCardColour),
+            ),
+          ],
+        )),
+        Container(
+            color: kBottomContainerColour,
+            margin: EdgeInsets.only(top: 10.0),
+            width: double.infinity,
+            height: kBottomContainerHeight)
+      ]),
     );
   }
 }
