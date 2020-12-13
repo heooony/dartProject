@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  return runApp(
-    MaterialApp(
-      home: Scaffold(
+  return runApp(MaterialApp(
+    home: Scaffold(
+      backgroundColor: Colors.red,
+      appBar: AppBar(
+        title: Text('Dicee'),
         backgroundColor: Colors.red,
-        appBar: AppBar(
-          title: Text('Dicee'),
-          backgroundColor: Colors.red,
-        ),
-        body: DicePage(),
       ),
-    )
-  );
+      body: DicePage(),
+    ),
+  ));
 }
 
 class DicePage extends StatefulWidget {
@@ -31,20 +29,15 @@ class _DicePageState extends State<DicePage> {
           Expanded(
               flex: 1,
               child: FlatButton(
-                onPressed: (){
-                },
+                onPressed: () {},
                 child: Image.asset('images/dice$leftDiceNumber.png'),
-              )
-          ),
+              )),
           Expanded(
               flex: 1,
               child: FlatButton(
-                onPressed: (){
-
-                },
+                onPressed: () {},
                 child: Image.asset('images/dice1.png'),
-              )
-          )
+              ))
         ],
       ),
     );
