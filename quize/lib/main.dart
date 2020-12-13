@@ -33,13 +33,14 @@ class _QuizPageState extends State<QuizPage> {
 
   void answer(bool select) {
     bool correctAnswer = quizBrain.getQuestionAnswer();
-    if (quizBrain.nextQuestion() == false) {
+    if (quizBrain.getEnd()) {
       setState(() {
         Alert(
           context: context,
-          type: AlertType.error,
-          title: "RFLUTTER ALERT",
-          desc: "Flutter is more awesome with RFlutter Alert.",
+          type: AlertType.success,
+          title: "총 점수",
+          desc: "10개 중 맞힌 개수는 다음과 같습니다 : " +
+              quizBrain.getCorrectAnswer().toString(),
           buttons: [
             DialogButton(
               child: Text(
@@ -63,8 +64,8 @@ class _QuizPageState extends State<QuizPage> {
             color: Colors.green,
           ),
         );
-        quizBrain.nextQuestion();
       });
+      quizBrain.nextQuestion(true);
     } else {
       setState(() {
         scoreKeeper.add(
@@ -73,8 +74,8 @@ class _QuizPageState extends State<QuizPage> {
             color: Colors.red,
           ),
         );
-        quizBrain.nextQuestion();
       });
+      quizBrain.nextQuestion(false);
     }
   }
 

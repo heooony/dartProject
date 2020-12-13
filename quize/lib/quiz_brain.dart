@@ -16,12 +16,16 @@ class QuizBrain {
     Question(q: '난 이런 퀴즈게임이 너무나도 좋고, 잘 만들었다고 생각한다.', a: true),
   ];
 
-  bool nextQuestion() {
+  void nextQuestion(bool correct) {
+    if (correct) _correctAnswer++;
     if (_questionNumber < _questionBank.length - 1) {
       _questionNumber++;
-    } else {
-      return false;
-    }
+      print(_correctAnswer);
+    } else {}
+  }
+
+  bool getEnd() {
+    return _questionNumber == _questionBank.length - 1;
   }
 
   int getCorrectAnswer() {
