@@ -6,7 +6,12 @@ import 'reusable.dart';
 
 const bottomContainerHeight = 80.0;
 const activeCardColour = Color(0xFF1D1E33);
+const inactiveCardColour = Color(0xFF111328);
 const bottomContainerColour = Color(0xFFEB1555);
+enum Gender {
+  male,
+  female,
+}
 
 class InputPage extends StatefulWidget {
   @override
@@ -14,6 +19,8 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  Gender selectedGender;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,20 +33,31 @@ class _InputPageState extends State<InputPage> {
               child: Row(
             children: [
               Expanded(
-                child: FlatButton(
-                  onPressed: () {},
-                  child: ReusableCard(
-                    colour: activeCardColour,
-                    cardChild: ReusableIcon(
-                      icon: FontAwesomeIcons.mars,
-                      label: 'MALE',
-                    ),
+                child: ReusableCard(
+                  onPress: () {
+                    setState(() {
+                      selectedGender = Gender.male;
+                    });
+                  },
+                  colour: selectedGender == Gender.male
+                      ? activeCardColour
+                      : inactiveCardColour,
+                  cardChild: ReusableIcon(
+                    icon: FontAwesomeIcons.mars,
+                    label: 'MALE',
                   ),
                 ),
               ),
               Expanded(
                 child: ReusableCard(
-                  colour: activeCardColour,
+                  onPress: () {
+                    setState(() {
+                      selectedGender = Gender.female;
+                    });
+                  },
+                  colour: selectedGender == Gender.female
+                      ? activeCardColour
+                      : inactiveCardColour,
                   cardChild: ReusableIcon(
                       icon: FontAwesomeIcons.venus, label: 'FEMALE'),
                 ),
