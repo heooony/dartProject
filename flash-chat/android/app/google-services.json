@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "500786379419",
+    "project_id": "dartproject-ed6fc",
+    "storage_bucket": "dartproject-ed6fc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:500786379419:android:20bfed3807f3e3a951243e",
+        "android_client_info": {
+          "package_name": "co.dongheon.flash_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "500786379419-n6o575uu8529e072kkbt3f60avgt4ibh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPrQ19SR9jPfoLvGqSX5W0C4fsRlsxbZg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "500786379419-n6o575uu8529e072kkbt3f60avgt4ibh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
