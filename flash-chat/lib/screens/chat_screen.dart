@@ -48,6 +48,7 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         leading: null,
         actions: <Widget>[
@@ -59,8 +60,8 @@ class _ChatScreenState extends State<ChatScreen> {
                 // Navigator.pop(context);
               }),
         ],
-        title: Text('⚡️Chat'),
-        backgroundColor: Colors.lightBlueAccent,
+        title: Text('Chickpea'),
+        backgroundColor: Colors.black,
       ),
       body: SafeArea(
         child: Column(
@@ -181,13 +182,13 @@ class MessageBubble extends StatelessWidget {
                     bottomLeft: Radius.circular(30.0),
                     bottomRight: Radius.circular(30.0)),
             elevation: 5.0,
-            color: isMe ? Colors.lightBlueAccent : Colors.white,
+            color: isMe ? Colors.yellowAccent : Colors.blueGrey,
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
               child: Text(
                 text,
                 style: TextStyle(
-                    color: isMe ? Colors.white : Colors.black, fontSize: 15.0),
+                    color: isMe ? Colors.black : Colors.white, fontSize: 15.0),
               ),
             ),
           ),
